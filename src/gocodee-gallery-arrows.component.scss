@@ -1,0 +1,39 @@
+.gocodee-gallery-arrow-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    display: table;
+    z-index: 2000;
+    table-layout: fixed;
+}
+
+.gocodee-gallery-arrow-left {
+    left: 0px;
+}
+
+.gocodee-gallery-arrow-right {
+    right: 0px;
+}
+
+.gocodee-gallery-arrow {
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    &.gocodee-gallery-disabled {
+        opacity: 0.6;
+        cursor: default;
+    }
+}
+
+.gocodee-gallery-arrow-left {
+    .gocodee-gallery-arrow {
+        left: 10px;
+    }
+}
+
+.gocodee-gallery-arrow-right {
+    .gocodee-gallery-arrow {
+        right: 10px;
+    }
+}

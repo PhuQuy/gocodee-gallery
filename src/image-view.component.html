@@ -1,0 +1,36 @@
+<div *ngIf="isVideo;else thumb" class="w-100 h-100 pointer position-relative">
+    <div class="gradient-bg " [hidden]="clickable">
+        <div class="play-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 30 30">
+                <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+                    <circle cx="14" cy="14" r="13" fill="#000" fill-opacity=".2" />
+                    <path fill="#FFF" d="M14 28C6.268 28 0 21.732 0 14S6.268 0 14 0s14 6.268 14 14-6.268 14-14 14zm0-26.6C7.041 1.4 1.4 7.041 1.4 14S7.041 26.6 14 26.6 26.6 20.959 26.6 14 20.959 1.4 14 1.4zm6.325 13.998l-8.122 5.083c-.2.125-.42.192-.635.192-.574 0-1.007-.447-1.007-1.04V9.37c0-.592.433-1.04 1.007-1.04.216 0 .436.067.635.192l8.122 5.082c.338.212.532.539.532.896 0 .358-.194.685-.532.897zm-8.204-5.144v8.496l6.788-4.248-6.788-4.248z" />
+                </g>
+            </svg>
+        </div>
+    </div>
+    <video class="video-content" preload="false" width="100%" [style.min-height]="minHeight + 'px'" [controls]="clickable">
+        <source [src]="src" [type]="type" (error)="catchError()">
+    </video>
+    <div *ngIf="!error;else errorne"></div>
+</div>
+<ng-template #thumb>
+    <img hidden [src]="src" (error)="catchError()" (load)="success()" />
+    <div [style.min-height]="minHeight + 'px'" class="image-content pointer w-100 h-100" [ngStyle]="{'background-image': 'url(' + src + ')'}">
+        <div *ngIf="!error;else errorne"></div>
+    </div>
+</ng-template>
+
+<ng-template #errorne>
+    <div class="w-100 h-100 error-bg" [style.min-height]="minHeight + 'px'">
+        <div class="error-content text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 30 30" class="mx-auto">
+                <g fill="#555" fill-rule="nonzero">
+                    <path d="M22.172 8.076l-.624-4.242c-.071-.481-.436-.834-.863-.834H9.31c-.427 0-.792.353-.863.835l-.622 4.241H1.875c-.483 0-.875.447-.875 1V26c0 .553.392 1 .875 1h26.25c.483 0 .875-.447.875-1V9.076c0-.553-.392-1-.875-1h-5.953zM27.25 25H2.75V10.076h5.816c.427 0 .792-.353.863-.835L10.05 5h9.894l.623 4.242c.071.481.436.834.863.834h5.819V25z" />
+                    <path d="M15 11c-3.309 0-6 2.692-6 6s2.691 6 6 6 6-2.692 6-6-2.691-6-6-6zm0 10c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z" />
+                </g>
+            </svg>
+            <label class="mx-auto my-0 pointer" style="font-size: 20px">NO IMAGE</label>
+        </div>
+    </div>
+</ng-template>

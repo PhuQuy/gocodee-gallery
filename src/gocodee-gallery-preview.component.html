@@ -1,0 +1,31 @@
+<gocodee-gallery-arrows (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()"
+    [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></gocodee-gallery-arrows>
+<div class="gocodee-gallery-preview-top">
+    <div class="gocodee-gallery-preview-icons">
+        <gocodee-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled"
+            [titleText]="action.titleText" (onClick)="action.onClick($event, index)"></gocodee-gallery-action>
+        <a *ngIf="download && src" [href]="src" class="gocodee-gallery-icon" aria-hidden="true" download>
+            <i class="gocodee-gallery-icon-content {{ downloadIcon }}"></i>
+        </a>
+        <gocodee-gallery-action *ngIf="zoom" [icon]="zoomOutIcon" [disabled]="!canZoomOut()" (onClick)="zoomOut()"></gocodee-gallery-action>
+        <gocodee-gallery-action *ngIf="zoom" [icon]="zoomInIcon" [disabled]="!canZoomIn()" (onClick)="zoomIn()"></gocodee-gallery-action>
+        <gocodee-gallery-action *ngIf="rotate" [icon]="rotateLeftIcon" (onClick)="rotateLeft()"></gocodee-gallery-action>
+        <gocodee-gallery-action *ngIf="rotate" [icon]="rotateRightIcon" (onClick)="rotateRight()"></gocodee-gallery-action>
+        <gocodee-gallery-action *ngIf="fullscreen" [icon]="'gocodee-gallery-fullscreen ' + fullscreenIcon" (onClick)="manageFullscreen()"></gocodee-gallery-action>
+        <gocodee-gallery-action [icon]="'gocodee-gallery-close ' + closeIcon" (onClick)="close()"></gocodee-gallery-action>
+    </div>
+</div>
+<div class="gocodee-spinner-wrapper gocodee-gallery-center" [class.gocodee-gallery-active]="showSpinner">
+    <i class="gocodee-gallery-icon gocodee-gallery-spinner {{spinnerIcon}}" aria-hidden="true"></i>
+</div>
+<div class="gocodee-gallery-preview-wrapper" (click)="closeOnClick && close()" (mouseup)="mouseUpHandler($event)"
+    (mousemove)="mouseMoveHandler($event)" (touchend)="mouseUpHandler($event)" (touchmove)="mouseMoveHandler($event)">
+    <div class="gocodee-gallery-preview-img-wrapper">
+        <img *ngIf="src" #previewImage class="gocodee-gallery-preview-img gocodee-gallery-center" [src]="src" (click)="$event.stopPropagation()"
+            (mouseenter)="imageMouseEnter()" (mouseleave)="imageMouseLeave()" (mousedown)="mouseDownHandler($event)"
+            (touchstart)="mouseDownHandler($event)" [class.gocodee-gallery-active]="!loading" [class.animation]="animation"
+            [class.gocodee-gallery-grab]="canDragOnZoom()" [style.transform]="getTransform()" [style.left]="positionLeft + 'px'"
+            [style.top]="positionTop + 'px'" />
+    </div>
+    <div class="gocodee-gallery-preview-text" *ngIf="showDescription && description" [innerHTML]="description"></div>
+</div>

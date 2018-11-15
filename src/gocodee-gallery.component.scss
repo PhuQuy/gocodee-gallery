@@ -1,0 +1,69 @@
+:host {
+    display: inline-block;
+
+    & > * {
+        float: left;
+    }
+
+    /deep/ {
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .gocodee-gallery-icon {
+            color: white;
+            font-size: 25px;
+            position: absolute;
+            z-index: 2000;
+            display: inline-block;
+
+            .gocodee-gallery-icon-content {
+                display: block;
+            }
+        }
+
+        .gocodee-gallery-clickable {
+            cursor: pointer;
+        }
+
+        .gocodee-gallery-icons-wrapper .gocodee-gallery-icon {
+            position: relative;
+            margin-right: 5px;
+            margin-top: 5px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .gocodee-gallery-icons-wrapper {
+            float: right;
+        }
+    }
+
+    .gocodee-gallery-layout {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gocodee-gallery-layout.thumbnails-top {
+        gocodee-gallery-image {
+            order: 2;
+        }
+
+        gocodee-gallery-thumbnails {
+            order: 1;
+        }
+    }
+
+    .gocodee-gallery-layout.thumbnails-bottom {
+        gocodee-gallery-image {
+            order: 1;
+        }
+
+        gocodee-gallery-thumbnails {
+            order: 2;
+        }
+    }
+}

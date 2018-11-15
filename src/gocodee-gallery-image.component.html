@@ -1,0 +1,10 @@
+<div class="gocodee-gallery-image-wrapper gocodee-gallery-animation-{{animation}} gocodee-gallery-image-size-{{size}}">
+    <div class="gocodee-gallery-image" *ngFor="let image of getImages(); let i = index;" [ngClass]="{ 'gocodee-gallery-active': selectedIndex == image.index, 'gocodee-gallery-inactive-left': selectedIndex > image.index, 'gocodee-gallery-inactive-right': selectedIndex < image.index, 'gocodee-gallery-clickable': clickable }" (click)="handleClick($event, image.index)"
+        [style.background-image]="getSafeUrl(image.src)" >
+        <div class="gocodee-gallery-icons-wrapper">
+            <gocodee-gallery-action *ngFor="let action of actions" [icon]="action.icon" [disabled]="action.disabled" [titleText]="action.titleText" (onClick)="action.onClick($event, image.index)"></gocodee-gallery-action>
+        </div>
+        <div class="gocodee-gallery-image-text" *ngIf="showDescription && descriptions[image.index]" [innerHTML]="descriptions[image.index]"></div>
+    </div>
+</div>
+<gocodee-gallery-arrows class="gocodee-gallery-image-size-{{size}}" *ngIf="arrows" (onPrevClick)="showPrev()" (onNextClick)="showNext()" [prevDisabled]="!canShowPrev()" [nextDisabled]="!canShowNext()" [arrowPrevIcon]="arrowPrevIcon" [arrowNextIcon]="arrowNextIcon"></gocodee-gallery-arrows>

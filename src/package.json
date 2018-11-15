@@ -1,0 +1,33 @@
+{
+  "name": "gocodee-gallery",
+  "description": "Responsive Angular 2 / 4 image gallery plugin",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PhuQuy/gocodee-gallery"
+  },
+  "author": {
+    "name": "PhuQuy",
+    "email": "phuquy@gocodee.com"
+  },
+  "keywords": [
+    "ngx",
+    "angular",
+    "angular2",
+    "angular4",
+    "gallery",
+    "image",
+    "thumbnails",
+    "responsive",
+    "preview"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PhuQuy/gocodee-gallery/issues"
+  },
+  "homepage": "https://lukasz-galka.github.io/ngx-gallery-demo",
+  "main": "bundles/gocodee-gallery.umd.js",
+  "module": "gocodee-gallery.js",
+  "jsnext:main": "gocodee-gallery.js",
+  "typings": "gocodee-gallery.d.ts"
+}

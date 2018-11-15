@@ -1,0 +1,105 @@
+:host {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.gocodee-gallery-image-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+}
+
+.gocodee-gallery-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+
+    &.gocodee-gallery-active {
+        z-index: 1000;
+    }
+}
+
+.gocodee-gallery-image-size-cover .gocodee-gallery-image {
+    background-size: cover;
+}
+
+.gocodee-gallery-image-size-contain .gocodee-gallery-image {
+    background-size: contain;
+}
+
+.gocodee-gallery-animation-fade {
+    .gocodee-gallery-image {
+        left: 0px;
+        opacity: 0;
+        transition: 0.5s ease-in-out;
+
+        &.gocodee-gallery-active {
+            opacity: 1;
+        }
+    }
+}
+
+.gocodee-gallery-animation-slide {
+    .gocodee-gallery-image {
+        transition: 0.5s ease-in-out;
+
+        &.gocodee-gallery-active {
+            left: 0px;
+        }
+
+        &.gocodee-gallery-inactive-left {
+            left: -100%;
+        }
+
+        &.gocodee-gallery-inactive-right {
+            left: 100%;
+        }
+    }
+}
+
+.gocodee-gallery-animation-rotate {
+    .gocodee-gallery-image {
+        transition: 1s ease;
+        transform: scale(3.5, 3.5) rotate(90deg);
+        left: 0px;
+        opacity: 0;
+
+        &.gocodee-gallery-active {
+            transform: scale(1, 1) rotate(0deg);
+            opacity: 1;
+        }
+    }
+}
+
+.gocodee-gallery-animation-zoom {
+    .gocodee-gallery-image {
+        transition: 1s ease;
+        transform: scale(2.5, 2.5);
+        left: 0px;
+        opacity: 0;
+
+        &.gocodee-gallery-active {
+            transform: scale(1, 1);
+            opacity: 1;
+        }
+    }
+}
+
+.gocodee-gallery-image-text {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    bottom: 0px;
+    z-index: 10;
+}
